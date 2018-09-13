@@ -1,0 +1,1439 @@
+//@import "compass/css3";
+
+/* mixins */
+
+@mixin transition($transition...) {
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+
+/* vars */
+
+$time: .5s;
+$ease: ease;
+$boxAnimation: 2.5s;
+html {
+    &.no-touch {
+        .hover-overlay {
+            padding-top: 25px !important;
+        }
+    }
+    body {
+        h2.h9 {
+            text-transform: uppercase !important;
+        }
+        h2,
+        .h2 {
+            text-transform: unset !important;
+        }
+        h3,
+        .h3,
+        h2,
+        .h2 {
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        p {
+            // font-size: 2rem;
+            &.h6 {
+                font-weight: bold;
+            }
+            a,
+            .btn-link {
+                font-size: 14px !important;
+            }
+        }
+        .d-flex {
+            display: flex;
+        }
+        .align-items-center {
+            align-items: center;
+        }
+        .justify-content-center {
+            justify-content: center;
+        }
+        .h-100 {
+            height: 100%;
+        }
+        header {
+            width: 100%;
+            //.navbar-logo, .navbar-logo img {
+            //@include transition(all $time $ease);
+            //* {
+            //	@include transition(all $time $ease);
+            //}
+            //}
+            &.scroll {
+                box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.5);
+                &.navbar {
+                    background-color: white;
+                    .navbar-brand {
+                        &.navbar-logo {
+                            height: 72px;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            @include transition(all $time $ease);
+                        }
+                    }
+                    .bata-link {
+                        a {
+                            @include transition(all $time $ease);
+                            height: 18px;
+                        }
+                    }
+                }
+                .navbar-collapse {
+                    .navbar-nav {
+                        li {
+                            a {
+                                @include transition(all $time $ease);
+                                padding-top: 24px;
+                                padding-bottom: 24px;
+                            }
+                        }
+                    }
+                }
+                .search-nav {
+                    .dropdown {
+                        .dropdown-toggle {
+                            @include transition(all $time $ease);
+                            padding-top: 24px;
+                            padding-bottom: 24px;
+                        }
+                    }
+                }
+            }
+            &.navbar {
+                position: fixed;
+                z-index: 12;
+                min-height: 50px;
+                background-color: rgba(255, 255, 255, 0.9);
+                .navbar-collapse {
+                    .navbar-nav {
+                        &:first-child {
+                            // width: calc(100% - 16.66666667%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            li {
+                                &:last-child {
+                                    display: none;
+                                }
+                            }
+                        }
+                        li {
+                            a {
+                                @include transition(all $time $ease);
+                            }
+                        }
+                    }
+                }
+                .navbar-brand {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    &.navbar-logo {
+                        @include transition(all $time $ease);
+                        display: block;
+                        // height: 102px;
+                        img {
+                            height: 100%;
+                            min-height: 10px;
+                            max-height: 30px;
+                        }
+                    }
+                }
+                .bata-link {
+                    a {
+                        @include transition(all $time $ease);
+                        height: 22px;
+                        img {
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .search-nav {
+                .dropdown {
+                    &.open {
+                        .dropdown-menu {
+                            #SearchForm_SearchForm_Search {
+                                background-color: white;
+                                border: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .main {
+            .overlay {
+                padding-top: 25px;
+            }
+        }
+        &#HomePage {
+            .pages {
+                .page {
+                    cursor: pointer;
+                }
+            }
+        }
+        &#ContactPage {
+            .pages {
+                .page {
+                    &:nth-child(3),
+                    &:nth-child(4) {
+                        cursor: pointer;
+                    }
+                }
+                &.news {
+                    .page {
+                        .content {
+                            &.hover-overlay {
+                                .overlay-content {
+                                    p {
+                                        button {
+                                            &.text-white {
+                                                color: #000;
+                                            }
+                                            &.btn-link {
+                                                color: #fff;
+                                                transition: .2s ease-in-out;
+                                                &:hover {
+                                                    transition: .2s ease-in-out;
+                                                    color: darken(#fff, 10%);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &#TimelinePage {
+            #Timeline {
+                .event {
+                    .animated {
+                        opacity: 1;
+                        -webkit-transform: translate(0);
+                        -ms-transform: translate(0);
+                        transform: translate(0);
+                    }
+                    &.out {
+                        .animated {
+                            //-webkit-transition: all 1.5s;
+                            //transition: all 1.5s;
+                            opacity: 0;
+                        }
+                        &.left-event,
+                        &.right-event,
+                        &.middle-event,
+                        &.chapter {
+                            .animated {
+                                -webkit-transform: translate(0);
+                                -ms-transform: translate(0);
+                                transform: translate(0);
+                            }
+                        }
+                    }
+                    &.testament {
+                        .animated {
+                            .col-xs-12 {
+                                padding-top: 20px;
+                                padding-bottom: 20px;
+                            }
+                        }
+                    }
+                }
+                .timeline-nav {
+                    -o-transition: all 0.2s ease;
+                    -moz-transition: all 0.2s ease;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                    * {
+                        -o-transition: all 0.2s ease;
+                        -moz-transition: all 0.2s ease;
+                        -webkit-transition: all 0.2s ease;
+                        transition: all 0.2s ease;
+                    }
+                    ul {
+                        &.nav>li>a {
+                            &:hover,
+                            &:focus {
+                                background: transparent;
+                            }
+                        }
+                    }
+                    &.affix {
+                        z-index: 10;
+                        top: 76px;
+                        box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.5);
+                        .nav-tabs {
+                            padding: 0;
+                            li {
+                                a {
+                                    .img-holder {
+                                        padding: 0 0 15px;
+                                        height: 0;
+                                        img {
+                                            display: block;
+                                            transform: scale(0);
+                                        }
+                                    }
+                                    span {
+                                        &.nav-circle {
+                                            width: 40px;
+                                            height: 40px;
+                                            line-height: 34px;
+                                        }
+                                        &.p.matchheight {
+                                            margin-bottom: 10px;
+                                        }
+                                        &.p,
+                                        &.matchheight {
+                                            font-size: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .nav-tabs {
+                        overflow: hidden;
+                        padding: 20px 0;
+                        li {
+                            padding: 0;
+                            //&.active {
+                            //	a {
+                            //		span.p.matchheight {
+                            //			//font-size: 30px;
+                            //			//line-height: 30px;
+                            //		}
+                            //	}
+                            //}
+                            a {
+                                padding: 0;
+                                margin: 0;
+                                span.p.matchheight {
+                                    margin: 15px;
+                                    line-height: 1;
+                                }
+                                .line-holder {
+                                    margin: 0;
+                                }
+                                .img-holder {
+                                    padding: 15px;
+                                    height: 100px;
+                                    img {
+                                        height: 100%;
+                                        width: auto;
+                                        margin: 0 auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &#ContactPage,
+        &#StaffPage {
+            .modal-content {
+                border: 0;
+                .modal-body {
+                    .close {
+                        line-height: 0;
+                        color: rgba(221, 40, 46, 1);
+                        opacity: 1;
+                        width: 100%;
+                        padding: 10px 0 30px 0;
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                    img {
+                        width: 50%;
+                        margin: 0 15px 15px 0;
+                        float: left;
+                    }
+                }
+                .modal-footer {
+                    padding: 0;
+                    border: 0;
+                    .btn {
+                        width: 100%;
+                        padding: 15px;
+                        background-color: rgba(221, 40, 46, 1);
+                        color: white;
+                        border: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#section-terms-and-conditions {
+    padding-top: 100px;
+}
+
+#ContactPage,
+#ChildHubPage {
+    .overlay {
+        padding-top: 25px;
+    }
+}
+
+#HomePage {
+    .page {
+        .content {
+            &.hover-overlay {
+                .overlay-content {
+                    display: initial !important;
+                    height: initial !important;
+                }
+            }
+        }
+    }
+}
+
+// #ChildHubPage {
+// 	.page {
+// 		overflow: hidden;
+// 		.content {
+// 			.overlay-content {
+// 				.col-sm-12 {
+// 					p {
+// 						font-size: 2.2rem;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+#HomePage,
+#ContactPage,
+#ChildHubPage,
+#TimelinePage {
+    .page,
+    .animated {
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: -webkit-transform $boxAnimation;
+        transition: transform $boxAnimation;
+        .focuspoint {
+            z-index: 2;
+            -webkit-transition: -webkit-transform $boxAnimation;
+            transition: transform $boxAnimation;
+        }
+        &:hover>.focuspoint {
+            -webkit-transition: -webkit-transform $boxAnimation;
+            transition: transform $boxAnimation;
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+    }
+    .page,
+    .animated {
+        .content {
+            &.hover-overlay {
+                overflow: hidden;
+                z-index: 3;
+                .overlay-content {
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    height: calc(100% - 24px - 50px);
+                    padding-top: 0;
+                }
+                &:hover {
+                    transition: .5s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+#TimelinePage {
+    .events {
+        .row {
+            .event {
+                .animated {
+                    .content {
+                        &.hover-overlay {
+                            .overlay-content {
+                                display: initial;
+                                height: initial;
+                            }
+                        }
+                    }
+                }
+                &:nth-child(15),
+                &:nth-child(16),
+                &:nth-child(27),
+                &:nth-child(28),
+                &:nth-child(29),
+                ,
+                &:nth-child(30),
+                ,
+                &:nth-child(31) {
+                    .animated {
+                        &:hover>.focuspoint {
+                            transform: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#ChildHubPage {
+    .main {
+        .content {
+            &.hover-overlay {
+                // padding: 25px;
+                h2 {
+                    &.h9 {
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+        .child-list {
+            .line {
+                .page {
+                    .content {
+                        &.hover-overlay {
+                            overflow: hidden;
+                            .overlay-content {
+                                overflow: hidden;
+                                display: flex;
+                                align-items: center;
+                                height: calc(100% - 24px - 50px);
+                                justify-content: center;
+                                padding-top: 0;
+                            }
+                            &:hover {
+                                transition: .5s ease-in-out;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // .quote {
+        // 	.content {
+        // 		blockquote {
+        // 			padding-right: 200px !important;
+        // 		}
+        // 	}
+        // }
+        .quote {
+            padding-top: 25px !important;
+        }
+    }
+}
+
+#StaffPage {
+    .main {
+        .text-white {
+            p {
+                button {
+                    color: #fff;
+                }
+            }
+        }
+        .staff {
+            &.key,
+            .focuspoint {
+                .overlay {
+                    padding-top: 25px;
+                }
+            }
+        }
+        .primary-staff {
+            // .float-right {
+            // 	right: 0;
+            // 	float: right;
+            // 	position: absolute;
+            // }
+            .align-bottom {
+                bottom: unset;
+                top: 0;
+                height: 100%;
+                display: flex;
+                /* align-items: center; */
+                justify-content: center;
+                flex-direction: column;
+            }
+            blockquote {}
+            .d-flex {
+                display: flex;
+            }
+            .align-items-center {
+                align-items: center;
+            }
+        }
+        .key-leaders {
+            padding: 0;
+            h2 {
+                margin: 50px 0;
+            }
+        }
+        .overlay-content {
+            h2,
+            .h2 {
+                text-transform: none;
+            }
+        }
+        .staff-members {
+            .content {
+                h2 .h2,
+                h2,
+                .h2 {
+                    text-transform: none;
+                }
+            }
+        }
+    }
+}
+
+#ContactPage {
+    // .page {
+    // 	position: relative;
+    // 	overflow: hidden;
+    // }
+    // .pages, .contact{
+    // 	position: relative;
+    // 	overflow: hidden;
+    // }
+    .offices {
+        .office {
+            p {
+                font-size: inherit;
+            }
+        }
+    }
+}
+
+footer {
+    nav {
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+
+/*==========  Mobile First Method  ==========*/
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (min-width: 320px) {
+    #back-to-top {
+        display: block;
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 480px) {}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    blockquote {
+        &.h3 {
+            font-size: 35px;
+            line-height: 1.1;
+        }
+    }
+    #StaffPage {
+        blockquote {
+            &.h3 {
+                font-size: 25px;
+                line-height: 1.1;
+            }
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+    #back-to-top {
+        display: none;
+    }
+}
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {
+    #ChildHubPage {
+        // blockquote {
+        // 	padding-right: 0 !important;
+        // } 
+        .secondary-content {
+            .center-v {
+                &.overlay-content {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (max-width: 1200px) {
+    h3,
+    .h3,
+    h3:not(.h9 span.line) {
+        font-size: 3rem !important;
+        line-height: 4.4rem !important;
+    }
+    p {
+        &.h3 {
+            font-size: 3rem !important;
+            line-height: 4.4rem !important;
+        }
+    }
+    #HomePage,
+    #ContactPage,
+    #ChildHubPage,
+    #TimelinePage {
+        .page,
+        .animated {
+            &:hover>.focuspoint {
+                -moz-transform: none;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+    }
+    #StaffPage {
+        .primary-staff {
+            .align-bottom {
+                top: 0 !important;
+            }
+            &.secondary-content {
+                .text-white {
+                    color: #000;
+                }
+            }
+        }
+    }
+    // #ChildHubPage {
+    // 	.main {
+    // 		.quote {
+    // 			.content {
+    // 				blockquote {
+    // 					padding-right: unset !important;
+    // 				}
+    // 			}
+    // 		}
+    // 	}
+    // }
+    header {
+        &.navbar {}
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    html {
+        body {
+            header {
+                &.navbar {
+                    &.scroll {
+                        .navbar-brand {
+                            &.navbar-logo {
+                                @include transition(all $time $ease);
+                                * {
+                                    @include transition(all $time $ease);
+                                }
+                            }
+                        }
+                        .navbar-header {
+                            .navbar-toggle {
+                                margin: 20px 15px;
+                                @include transition(all $time $ease);
+                            }
+                        }
+                        .navbar-collapse {
+                            .navbar-nav {
+                                // &:first-child {
+                                // 	flex-direction: column;
+                                //     align-items: flex-start;
+                                // }
+                                li {
+                                    a {
+                                        padding-top: 10px;
+                                        padding-bottom: 10px;
+                                        @include transition(all $time $ease);
+                                    }
+                                }
+                            }
+                        }
+                        .search-nav {
+                            .dropdown {
+                                .dropdown-toggle {
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
+                                    @include transition(all $time $ease);
+                                }
+                            }
+                        }
+                    }
+                    .navbar-brand {
+                        &.navbar-logo {
+                            @include transition(all $time $ease);
+                            * {
+                                @include transition(all $time $ease);
+                            }
+                        }
+                    }
+                    .navbar-header {
+                        .navbar-toggle {
+                            margin: 42px 15px;
+                            background-color: transparent;
+                            @include transition(all $time $ease);
+                            &:hover {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                    .navbar-collapse {
+                        .navbar-nav {
+                            &:first-child {
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                        }
+                        padding-left: 35px;
+                        //@include transition(all $time $ease);
+                    }
+                }
+                .search-nav {
+                    .dropdown {
+                        &.open {
+                            .dropdown-menu {
+                                padding: 0 15px;
+                                #SearchForm_SearchForm_Search {
+                                    border: 1px solid black;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &#TimelinePage {
+                #Timeline {
+                    .timeline-nav {
+                        &.affix {
+                            top: 72px;
+                        }
+                        .nav-tabs {
+                            li {
+                                a {
+                                    span.p.matchheight {
+                                        top: 60px;
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &#ChildHubPage {
+                .primary-image {
+                    img {
+                        left: unset !important;
+                        right: -200px;
+                    }
+                }
+                &.sustainability {
+                    .primary-image {
+                        background-color: #f1edee;
+                        img {
+                            min-width: unset !important;
+                            min-height: unset !important;
+                            left: unset !important;
+                            right: -200px !important;
+                            padding-top: 500px;
+                        }
+                        .padded-content {
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+            }
+            &#ChildHubPage {
+                .primary-image {
+                    .padded-content {
+                        .content {
+                            p {
+                                &.h6 {
+                                    margin-bottom: 1100px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .secondary-content {
+                    .overlay {
+                        display: flex !important;
+                        align-items: center !important;
+                        p {
+                            &.h3 {
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            &#StaffPage,
+            &#ContactPage {
+                .modal {
+                    .modal-content {
+                        .modal-body {
+                            button {
+                                &.close {
+                                    font-size: 30px;
+                                }
+                            }
+                            img,
+                            &:nth-child(2),
+                            img.img-responsive {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            &#ContactPage {
+                .pages {
+                    &.news {
+                        .page {
+                            .content {
+                                &.hover-overlay {
+                                    .overlay-content {
+                                        p {
+                                            button {
+                                                &.text-white {
+                                                    color: #000;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 992px) {
+    #ChildHubPage {
+        .content {
+            &.hover-overlay {
+                padding: 25px 0 !important;
+            }
+        }
+    }
+    .primary-image {
+        .padded-content {
+            padding-top: 110px !important;
+        }
+    }
+    // #StaffPage {
+    // 	.staff-members {
+    // 		.staff {
+    // 			&:nth-child(7){
+    // 				h3{
+    // 					&.h2 {
+    // 		    			font-size: 32px;
+    // 					}
+    // 				}
+    // 			}
+    // 		}
+    // 	}
+    // }
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (max-width: 768px) {
+    html {
+        &.no-touch {
+            .overlay-content {
+                &.center-v {
+                    -o-transform: none;
+                    -ms-transform: none;
+                    -moz-transform: none;
+                    -webkit-transform: none;
+                    transform: none;
+                    position: unset;
+                    padding: 0;
+                }
+            }
+        }
+        body {
+            h3,
+            .h3 {
+                font-size: 2rem !important;
+                line-height: 3rem !important;
+                &.h10 {
+                    a[title="Terms and Conditions"] {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            header {
+                &.scroll {
+                    &.navbar {
+                        .navbar-brand {
+                            &.navbar-logo {
+                                padding: 20px 0;
+                                height: 60px;
+                                img {
+                                    height: 20px;
+                                }
+                            }
+                        }
+                        .navbar-header {
+                            .navbar-toggle {
+                                margin: 15px;
+                            }
+                        }
+                        .bata-link {
+                            a {
+                                height: 16px;
+                            }
+                        }
+                    }
+                }
+                &.navbar {
+                    .navbar-collapse {
+                        .navbar-nav {
+                            &:first-child {
+                                width: unset;
+                                flex-direction: column;
+                                align-items: unset;
+                            }
+                        }
+                    }
+                    .navbar-header {
+                        .navbar-toggle {
+                            margin: 30px 15px;
+                        }
+                    }
+                    .navbar-brand {
+                        &.navbar-logo {
+                            height: 90px;
+                            padding-top: 30px;
+                            padding-bottom: 30px;
+                            img {
+                                height: 30px;
+                                margin: 0;
+                            }
+                        }
+                    }
+                    .bata-link {
+                        a {
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+            &#HomePage {
+                .pages {
+                    .page {
+                        cursor: pointer;
+                    }
+                }
+            }
+            &#TimelinePage {
+                .h2 {
+                    font-size: 22px;
+                }
+                #Timeline {
+                    .timeline-nav {
+                        &.affix {
+                            top: 60px;
+                            .nav-tabs {
+                                li {
+                                    a {
+                                        .line-holder {
+                                            margin: 0 0 15px;
+                                        }
+                                        .img-holder {
+                                            height: 0;
+                                            padding: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .nav-tabs {
+                            li {
+                                a {
+                                    span.p.matchheight {
+                                        top: 60px;
+                                        font-size: 18px;
+                                        margin-bottom: 0;
+                                    }
+                                    .line-holder {
+                                        margin: 15px 0;
+                                    }
+                                    .img-holder {
+                                        height: 0;
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &#StaffPage {
+                .staff-members {
+                    .staff {
+                        &:nth-child(7) {
+                            h3 {
+                                &.h2 {
+                                    font-size: 26px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &#ChildHubPage {
+                &.sustainability {
+                    .primary-image {
+                        background-color: #f1edee;
+                        img {
+                            left: unset !important;
+                            right: -500px;
+                            padding-top: 250px;
+                        }
+                        .padded-content {
+                            padding-bottom: 200px;
+                        }
+                    }
+                }
+                .secondary-content {
+                    .overlay {
+                        padding: 50px !important;
+                    }
+                }
+                .quote {
+                    // height: auto !important;
+                    .content {
+                        &.row {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Extra Small Devices, Phones + Landscape */
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    #HomePage {
+        .primary-image {
+            img {
+                left: unset !important;
+                right: -100px !important;
+            }
+        }
+    }
+    #ContactPage {
+        //img[src*="home-page-main-image-white4.jpg"] {
+        .primary-image {
+            img {
+                left: 0 !important;
+            }
+        }
+    }
+    #ChildHubPage {
+        .primary-image {
+            img {
+                left: unset !important;
+                right: -450px;
+            }
+        }
+        &.sustainability {
+            .primary-image {
+                background-color: #f1edee;
+                img {
+                    right: -450px !important;
+                    padding-top: 50px !important;
+                }
+            }
+        }
+    }
+    #StaffPage {
+        .primary-image {
+            img {
+                left: unset !important;
+                right: -280px;
+            }
+        }
+    }
+    #TimelinePage {
+        .primary-image {
+            img {
+                left: unset !important;
+                right: -200px;
+            }
+        }
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (max-width: 480px) {
+    html {
+        body {
+            .focuspoint {
+                &.primary-image {
+                    .padded-content {
+                        h1,
+                        .content {
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            &#HomePage,
+            &#ContactPage,
+            &#ChildHubPage,
+            &#TimelinePage {
+                .page {
+                    height: auto !important;
+                }
+            }
+            &#HomePage {
+                //img[src*="home-page-main-image-white4.jpg"] {
+                .primary-image {
+                    img {
+                        // left: -70px !important;
+                        //top: -400px;
+                    }
+                    h1,
+                    p.h6 {
+                        text-align: left !important;
+                    }
+                }
+            }
+            &#ContactPage {
+                .primary-image {
+                    img {
+                        left: -210px !important;
+                    }
+                }
+            }
+            &#ChildHubPage {
+                // &.sustainability {
+                // 	.primary-image{
+                // 		background-color: #f1edee;
+                // 		img {
+                // 			left: unset !important;
+                // 			right: -50px;
+                // 			padding-top: 540px;
+                // 		}
+                // 	}
+                // }
+                &.sustainability {
+                    .primary-image {
+                        background-color: #f1edee;
+                        img {
+                            // width: 600px !important;
+                            min-width: unset !important;
+                            min-height: unset !important;
+                            left: unset !important;
+                            right: 0 !important;
+                            padding-top: 550px;
+                        }
+                        .padded-content {
+                            padding-bottom: 290px;
+                        }
+                    }
+                }
+            }
+            &#StaffPage {
+                .primary-image {
+                    img {
+                        left: unset !important;
+                        right: -270px;
+                    }
+                }
+                .focuspoint {
+                    &.summary-image {
+                        &.row {
+                            img {
+                                left: -175% !important;
+                            }
+                        }
+                    }
+                }
+            }
+            &#TimelinePage {
+                .primary-image {
+                    img {
+                        left: unset !important;
+                        right: -400px;
+                    }
+                }
+                #Timeline {
+                    .timeline-nav {
+                        &.affix {
+                            .nav-tabs {
+                                li {
+                                    a {
+                                        .line-holder {
+                                            margin: 15px 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &#StaffPage {
+                .h2 {
+                    font-size: 32px;
+                    line-height: 1;
+                }
+                .staff {
+                    &.key {
+                        h3 {
+                            &.h9 {
+                                color: #444444;
+                                span {
+                                    border-color: #444444;
+                                }
+                            }
+                        }
+                        h4 {
+                            &.h7 {
+                                color: #444444;
+                            }
+                        }
+                        .content {
+                            &.overlay {
+                                padding: 25px 0;
+                            }
+                        }
+                    }
+                }
+                .primary-staff {
+                    blockquote {
+                        font-size: inherit !important;
+                        line-height: inherit !important;
+                    }
+                }
+            }
+            &#ChildHubPage {
+                .primary-image {
+                    .padded-content {
+                        .content {
+                            p {
+                                &.h6 {
+                                    margin-bottom: unset !important;
+                                }
+                            }
+                        }
+                    }
+                }
+                .quote {
+                    height: auto !important;
+                    .content {
+                        &.row {
+                            width: 100vw;
+                            blockquote {
+                                font-size: 2.5rem;
+                                line-height: 2.9rem;
+                            }
+                            p {
+                                &.p1 {
+                                    padding-bottom: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            footer {
+                nav {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (max-width: 320px) {
+    #ChildHubPage {
+        &.sustainability {
+            .primary-image {
+                background-color: #f1edee;
+                img {
+                    left: unset !important;
+                    // padding-top: 540px;
+                    padding-top: 700px !important;
+                }
+                .padded-content {
+                    padding-bottom: 300px !important;
+                }
+            }
+        }
+    }
+}
